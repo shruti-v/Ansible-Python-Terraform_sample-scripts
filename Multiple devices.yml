@@ -1,0 +1,19 @@
+---
+  - name: Configure multiple interfaces
+    hosts: all
+    tasks:
+      - name: config mode
+        ios_config: 
+             parents: "{{item}}"
+             lines: 
+                - description WAN interface
+                
+        with_items:
+             - interface Serial1/0
+             - interface Serial1/1
+             
+        register: multiple_int_config
+
+      - name: Print Output
+        debug:
+            var: multiple_int_config

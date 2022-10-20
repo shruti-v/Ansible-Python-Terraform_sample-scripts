@@ -1,0 +1,14 @@
+---
+  - name: IOS_Commands
+    hosts: all
+    tasks:
+      - name: Get Running config
+        ios_command: 
+             commands: 
+                -show run
+                -show ip int brief
+        register: Configuration
+        
+      - name: Print Configuration
+        debug:
+            var: Configuration.stdout_lines

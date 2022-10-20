@@ -1,0 +1,13 @@
+---
+  - name: Configure from file
+    hosts: all
+    tasks:
+      - name: config from file
+        ios_config: 
+           src: "config_from_file.txt"
+             
+        register: configuration_from_file
+
+      - name: Print Output
+        debug:
+            var: configuration_from_file

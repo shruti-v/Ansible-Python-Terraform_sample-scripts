@@ -1,0 +1,14 @@
+---
+  - name: IOS_config
+    hosts: all
+    tasks:
+      - name: config mode
+        ios_config: 
+             lines: 
+                - ip domain name shrutivernekar.com
+        register: Domain name
+
+      - name: Print Output
+        debug:
+            var: Domain name
+  

@@ -1,0 +1,17 @@
+---
+  - name: IOS facts
+    hosts: all
+    tasks:
+      - name: Get IOS facts
+        ios_facts: 
+           gather_subset: all
+           gather_network_resources: interfaces
+        register: Output
+        
+      - name: Print Output
+        debug:
+            var: Output
+            
+      - name: Filter Interfaces
+        debug:
+            var: ansible_net_interfaces

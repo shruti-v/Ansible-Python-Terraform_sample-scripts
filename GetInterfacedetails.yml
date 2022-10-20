@@ -1,0 +1,15 @@
+---
+- name: Get Interface Details
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Interface details
+      ios_command:
+        authorize: yes
+        commands:
+          - show ip int brief
+      register: print_output
+
+    -  debug: var=print_output.stdout_lines

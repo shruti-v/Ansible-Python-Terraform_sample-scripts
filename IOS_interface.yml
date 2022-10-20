@@ -1,0 +1,17 @@
+---
+  - name: Merge provided configuration with device configuration
+    hosts: all
+    tasks:
+      - ios_interfaces:
+          config:
+            - name: FastEthernet0/0
+              description: 'LAN Network'
+              enabled: yes
+              speed: auto
+              duplex: auto
+          state: merged
+        register: interface config
+
+   - name: Print Output
+        debug:
+            var: interface config
